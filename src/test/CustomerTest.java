@@ -11,6 +11,7 @@ public class CustomerTest {
     Customer priya = new Customer("Priya");
     Customer jo = new Customer("Jo");
     Customer andrew = new Customer("Andrew");
+    Customer sarah = new Customer("Sarah");
 
     Movie officeSpace = new Movie("Office Space", Movie.REGULAR);
     Movie harryPotter = new Movie("Harry Potter", Movie.CHILDRENS);
@@ -52,7 +53,7 @@ public class CustomerTest {
     }
 
     @Test
-    public void createsStatementForCustomerKatherine() {
+    public void createsStatementForLongerChildrens() {
         Customer katherine = new Customer("Katherine");
         katherine.addRental(fourDayHarryPotter);
         assertEquals("Rental Record for Katherine\n" +
@@ -62,11 +63,24 @@ public class CustomerTest {
     }
 
     @Test
-    public void createsStatementForCustomerAndrew() {
+    public void createsStatementForNewRelease() {
         andrew.addRental(twoDayStarWars);
         assertEquals("Rental Record for Andrew\n" +
                 "\tStar Wars\t9.0\n" +
                 "Amount owed is 9.0\n" +
                 "You earned 2 frequent renter points", andrew.statement());
+    }
+
+    @Test
+    public void createsStatementForCustomerWithNumerousRentals() {
+        sarah.addRental(twoDayStarWars);
+        sarah.addRental(fourDayHarryPotter);
+        sarah.addRental(threeDayOfficeSpace);
+        assertEquals("Rental Record for Sarah\n" +
+                "\tStar Wars\t9.0\n" +
+                "\tHarry Potter\t3.0\n" +
+                "\tOffice Space\t3.5\n" +
+                "Amount owed is 15.5\n" +
+                "You earned 4 frequent renter points", sarah.statement());
     }
 }
