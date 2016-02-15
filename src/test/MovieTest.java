@@ -1,3 +1,6 @@
+package test;
+
+import main.Movie;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
