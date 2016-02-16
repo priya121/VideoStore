@@ -7,7 +7,7 @@ import org.junit.Test;
 import static junit.framework.TestCase.assertEquals;
 
 public class RentalTest {
-    Movie officeSpace = new Movie("Office Space", 5);
+    Movie officeSpace = new Movie("Office Space", 0);
     Rental twoDayRental = new Rental(officeSpace, 2);
 
     @Test

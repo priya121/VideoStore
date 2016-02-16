@@ -6,7 +6,7 @@ import org.junit.Test;
 import static junit.framework.TestCase.assertEquals;
 
 public class MovieTest {
-    Movie officeSpace = new Movie("Office Space", 5);
+    Movie officeSpace = new Movie("Office Space", 0);
 
     @Test
     public void checksTitle() {
@@ -15,13 +15,7 @@ public class MovieTest {
 
     @Test
     public void checksPriceCode() {
-        assertEquals(5, officeSpace.getPriceCode());
-    }
-
-    @Test
-    public void changePriceCode() {
-        officeSpace.setPriceCode(9);
-        assertEquals(9, officeSpace.getPriceCode());
+        assertEquals(0, officeSpace.getPriceCode());
     }
 
 }
