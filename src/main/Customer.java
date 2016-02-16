@@ -41,8 +41,4 @@ public class Customer {
         result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points";
         return result;
     }
-
-    private double amountFor (Rental aRental){
-        return aRental.getCharge();
-    }
 }
