@@ -11,6 +11,7 @@ public class CustomerTest {
     Customer priya = new Customer("Priya");
     Customer jo = new Customer("Jo");
     Customer andrew = new Customer("Andrew");
+    Customer katherine = new Customer("Katherine");
     Customer sarah = new Customer("Sarah");
 
     Movie officeSpace = new Movie("Office Space", Movie.REGULAR);
@@ -54,7 +55,6 @@ public class CustomerTest {
 
     @Test
     public void createsStatementForLongerChildrens() {
-        Customer katherine = new Customer("Katherine");
         katherine.addRental(fourDayHarryPotter);
         assertEquals("Rental Record for Katherine\n" +
                 "\tHarry Potter\t3.0\n" +
