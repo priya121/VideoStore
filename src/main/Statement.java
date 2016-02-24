@@ -3,11 +3,11 @@ package main;
 import java.util.Enumeration;
 import java.util.Vector;
 
-public class Customer {
+public class Statement {
     private String name;
     private Vector rentalList = new Vector();
 
-    public Customer(String name) {
+    public Statement(String name) {
         this.name = name;
     }
 
@@ -19,7 +19,7 @@ public class Customer {
         return name;
     }
 
-    public String statement() {
+    public String generate() {
         Enumeration rentals = rentalList.elements();
         String result = "Rental Record for " + getName() + "\n";
         while (rentals.hasMoreElements()) {
@@ -33,7 +33,7 @@ public class Customer {
         return result;
     }
 
-    private double getTotalCharge() {
+    public double getTotalCharge() {
         double result = 0;
         Enumeration rentals = rentalList.elements();
         while (rentals.hasMoreElements()) {
@@ -43,7 +43,7 @@ public class Customer {
         return result;
     }
 
-    private int getTotalFrequentRenterPoints() {
+    public int getTotalFrequentRenterPoints() {
         int result = 0;
         Enumeration rentals = rentalList.elements();
         while (rentals.hasMoreElements()) {
