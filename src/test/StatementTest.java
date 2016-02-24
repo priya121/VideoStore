@@ -18,15 +18,15 @@ public class StatementTest {
         statement = new Statement("Customer");
     }
 
-    Movie officeSpace = new Movie("Office Space", Movie.REGULAR);
-    Movie harryPotter = new Movie("Harry Potter", Movie.CHILDRENS);
-    Movie starWars = new Movie("Star Wars", Movie.NEW_RELEASE);
+    Movie regularMovie = new Movie("Regular Movie", Movie.REGULAR);
+    Movie childrensMovie = new Movie("Childrens Movie", Movie.CHILDRENS);
+    Movie newRelease = new Movie("New Release Movie", Movie.NEW_RELEASE);
 
-    Rental twoDayOfficeSpace = new Rental(officeSpace, 2);
-    Rental threeDayOfficeSpace = new Rental(officeSpace, 3);
-    Rental threeDayHarryPotter = new Rental(harryPotter, 3);
-    Rental fourDayHarryPotter = new Rental(harryPotter, 4);
-    Rental twoDayStarWars = new Rental(starWars, 3);
+    Rental twoDayOfficeSpace = new Rental(regularMovie, 2);
+    Rental threeDayOfficeSpace = new Rental(regularMovie, 3);
+    Rental threeDayHarryPotter = new Rental(childrensMovie, 3);
+    Rental fourDayHarryPotter = new Rental(childrensMovie, 4);
+    Rental twoDayStarWars = new Rental(newRelease, 3);
 
     @Test
     public void createsStatementForCustomerPriyaSingleRegularRental() {
@@ -80,9 +80,9 @@ public class StatementTest {
         statement.addRental(fourDayHarryPotter);
         statement.addRental(threeDayOfficeSpace);
         assertEquals("Rental Record for Customer\n" +
-                        "\tStar Wars\t9.0\n" +
-                        "\tHarry Potter\t3.0\n" +
-                        "\tOffice Space\t3.5\n" +
+                        "\tNew Release Movie\t9.0\n" +
+                        "\tChildrens Movie\t3.0\n" +
+                        "\tRegular Movie\t3.5\n" +
                         "Amount owed is 15.5\n" +
                         "You earned 4 frequent renter points",
                 statement.generate());
