@@ -72,7 +72,7 @@ public class StatementTest {
         statement.addRental(twoDayStarWars);
         statement.addRental(fourDayHarryPotter);
         statement.addRental(threeDayOfficeSpace);
-        assertEquals("Rental Record for Sarah\n" +
+        assertEquals("Rental Record for Customer\n" +
                         "\tStar Wars\t9.0\n" +
                         "\tHarry Potter\t3.0\n" +
                         "\tOffice Space\t3.5\n" +
