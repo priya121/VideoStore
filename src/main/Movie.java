@@ -14,8 +14,8 @@ public class Movie {
         setPriceCode(priceCode);
     }
 
-    public void setPriceCode(int arg) {
-        switch (arg) {
+    public void setPriceCode(int movieType) {
+        switch (movieType) {
             case REGULAR:
                 price = new RegularPrice();
                 break;

@@ -30,10 +30,13 @@ public class Statement {
     private String rentalLines() {
         String statementText = "";
         for (Rental rental : rentals) {
-            statementText += "\t" + rental.getMovie().getTitle() + "\t" +
-                    String.valueOf(rental.getCharge()) + "\n";
+            statementText += formatRentalLine(rental);
         }
         return statementText;
+    }
+
+    private String formatRentalLine(Rental rental) {
+        return String.format("\t%s\t%.1f\n", rental.getMovie().getTitle(), rental.getCharge());
     }
 
     private String header() {
