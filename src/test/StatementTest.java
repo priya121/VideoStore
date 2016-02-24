@@ -1,15 +1,22 @@
 package test;
 
 import junit.framework.Assert;
-import main.Statement;
 import main.Movie;
 import main.Rental;
+import main.Statement;
+import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
 
 public class StatementTest {
-    Statement statement = new Statement("Customer");
+
+    private Statement statement;
+
+    @Before
+    public void setup() {
+        statement = new Statement("Customer");
+    }
 
     Movie officeSpace = new Movie("Office Space", Movie.REGULAR);
     Movie harryPotter = new Movie("Harry Potter", Movie.CHILDRENS);
