@@ -20,14 +20,18 @@ public class Statement {
     }
 
     public String generate() {
-        String result = "Rental Record for " + getName() + "\n";
+        String statementText = header();
         for (Rental rental : rentals) {
-            result += "\t" + rental.getMovie().getTitle() + "\t" +
+            statementText += "\t" + rental.getMovie().getTitle() + "\t" +
                     String.valueOf(rental.getCharge()) + "\n";
         }
-        result += "Amount owed is " + String.valueOf(getTotalCharge()) + "\n";
-        result += "You earned " + String.valueOf(getTotalFrequentRenterPoints()) + " frequent renter points";
-        return result;
+        statementText += "Amount owed is " + String.valueOf(getTotalCharge()) + "\n";
+        statementText += "You earned " + String.valueOf(getTotalFrequentRenterPoints()) + " frequent renter points";
+        return statementText;
+    }
+
+    private String header() {
+        return "Rental Record for " + getName() + "\n";
     }
 
     public double getTotalCharge() {
@@ -40,7 +44,7 @@ public class Statement {
 
     public int getTotalFrequentRenterPoints() {
         int result = 0;
-            for (Rental rental : rentals) {
+        for (Rental rental : rentals) {
             result += rental.getFrequentRenterPoints();
         }
         return result;
