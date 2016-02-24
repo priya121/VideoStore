@@ -17,14 +17,14 @@ public class Statement {
 
     public String generate() {
         String statementText = header();
-
         statementText += rentalLines();
-
-        statementText += "Amount owed is " + String.valueOf(
-                getTotalCharge()) + "\n";
-        statementText += "You earned " + String.valueOf(
-                getTotalFrequentRenterPoints()) + " frequent renter points";
+        statementText += footer();
         return statementText;
+    }
+
+    private String footer() {
+        return String.format("Amount owed is %.1f\nYou earned %d frequent renter points",
+                getTotalCharge(), getTotalFrequentRenterPoints());
     }
 
     private String rentalLines() {
