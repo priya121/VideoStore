@@ -15,23 +15,29 @@ public class Statement {
         rentals.add(rental);
     }
 
-    public String getName() {
-        return name;
-    }
-
     public String generate() {
         String statementText = header();
+
+        statementText += rentalLines();
+
+        statementText += "Amount owed is " + String.valueOf(
+                getTotalCharge()) + "\n";
+        statementText += "You earned " + String.valueOf(
+                getTotalFrequentRenterPoints()) + " frequent renter points";
+        return statementText;
+    }
+
+    private String rentalLines() {
+        String statementText = "";
         for (Rental rental : rentals) {
             statementText += "\t" + rental.getMovie().getTitle() + "\t" +
                     String.valueOf(rental.getCharge()) + "\n";
         }
-        statementText += "Amount owed is " + String.valueOf(getTotalCharge()) + "\n";
-        statementText += "You earned " + String.valueOf(getTotalFrequentRenterPoints()) + " frequent renter points";
         return statementText;
     }
 
     private String header() {
-        return "Rental Record for " + getName() + "\n";
+        return String.format("Rental Record for %s\n", name);
     }
 
     public double getTotalCharge() {
