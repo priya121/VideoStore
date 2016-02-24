@@ -1,18 +1,18 @@
 package main;
 
-import java.util.Enumeration;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Statement {
     private String name;
-    private Vector rentalList = new Vector();
+    private List<Rental> rentals = new ArrayList<>();
 
     public Statement(String name) {
         this.name = name;
     }
 
-    public void addRental(Rental arg) {
-        rentalList.add(arg);
+    public void addRental(Rental rental) {
+        rentals.add(rental);
     }
 
     public String getName() {
@@ -20,13 +20,10 @@ public class Statement {
     }
 
     public String generate() {
-        Enumeration rentals = rentalList.elements();
         String result = "Rental Record for " + getName() + "\n";
-        while (rentals.hasMoreElements()) {
-            Rental each = (Rental) rentals.nextElement();
-
-            result += "\t" + each.getMovie().getTitle() + "\t" +
-                    String.valueOf(each.getCharge()) + "\n";
+        for (Rental rental : rentals) {
+            result += "\t" + rental.getMovie().getTitle() + "\t" +
+                    String.valueOf(rental.getCharge()) + "\n";
         }
         result += "Amount owed is " + String.valueOf(getTotalCharge()) + "\n";
         result += "You earned " + String.valueOf(getTotalFrequentRenterPoints()) + " frequent renter points";
@@ -35,20 +32,16 @@ public class Statement {
 
     public double getTotalCharge() {
         double result = 0;
-        Enumeration rentals = rentalList.elements();
-        while (rentals.hasMoreElements()) {
-            Rental each = (Rental) rentals.nextElement();
-            result += each.getCharge();
+        for (Rental rental : rentals) {
+            result += rental.getCharge();
         }
         return result;
     }
 
     public int getTotalFrequentRenterPoints() {
         int result = 0;
-        Enumeration rentals = rentalList.elements();
-        while (rentals.hasMoreElements()) {
-            Rental each = (Rental) rentals.nextElement();
-            result += each.getFrequentRenterPoints();
+            for (Rental rental : rentals) {
+            result += rental.getFrequentRenterPoints();
         }
         return result;
     }
