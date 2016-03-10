@@ -1,5 +1,10 @@
 package main;
 
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Supplier;
+
 public class Movie {
 
     public static final int CHILDRENS = 2;
@@ -15,19 +20,12 @@ public class Movie {
     }
 
     public void setPriceCode(int movieType) {
-        switch (movieType) {
-            case REGULAR:
-                price = new RegularPrice();
-                break;
-            case CHILDRENS:
-                price = new ChildrensPrice();
-                break;
-            case NEW_RELEASE:
-                price = new NewReleasePrice();
-                break;
-            default:
-                throw new IllegalArgumentException("Incorrect price code");
-        }
+        Map<Object, Supplier<Price>> map = new HashMap<>();
+        map.put(NEW_RELEASE, () -> new NewReleasePrice());
+        map.put(REGULAR, () -> new RegularPrice());
+        map.put(CHILDRENS, () -> new ChildrensPrice());
+        Supplier<Price> supplier = map.get(movieType);
+        price =  supplier.get();
     }
 
     public String getTitle() {
